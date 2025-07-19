@@ -1,6 +1,9 @@
 import {
   AppBar,
   Box,
+  IconButton,
+  Menu,
+  MenuItem,
   Tab,
   Tabs,
   Toolbar,
@@ -8,22 +11,23 @@ import {
   useTheme,
 } from "@mui/material";
 import { useState } from "react";
+import { Menu as MenuIcon } from "@mui/icons-material";
 
 type HeaderProps = {
   isMobile: boolean;
 };
 
 export default function Header({ isMobile }: HeaderProps) {
-  //   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  //   const openMenu = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const openMenu = Boolean(anchorEl);
   const theme = useTheme();
-  //   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-  //     setAnchorEl(event.currentTarget);
-  //   };
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-  //   const handleClose = () => {
-  //     setAnchorEl(null);
-  //   };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const [value, setValue] = useState(0);
 
@@ -52,29 +56,66 @@ export default function Header({ isMobile }: HeaderProps) {
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box sx={{ display: "flex" }}>
           <Typography
-            variant="h5"
+            variant={isMobile ? "h6" : "h5"}
             sx={{ fontWeight: 600, ml: isMobile ? 1 : 0 }}
           >
             Wei Qing
           </Typography>
         </Box>
         <Box sx={{ display: "flex" }}>
-          <Tabs
-            value={value}
-            onChange={handleTabChange}
-            textColor="inherit"
-            indicatorColor="secondary"
-            sx={{
-              flexGrow: 1,
-              ml: 4, // spacing between title and tabs
-            }}
-          >
-            <Tab label="Home" />
-            <Tab label="Skill" />
-            <Tab label="Experience" />
-            <Tab label="Project" />
-            <Tab label="Education" />
-          </Tabs>
+          {isMobile ? (
+            <>
+              {" "}
+              <IconButton sx={{ padding: 0 }} onClick={handleClick}>
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={openMenu}
+                onClose={handleClose}
+                PaperProps={{
+                  sx: { mt: 1.5, minWidth: 160 },
+                }}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>Settings</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <>
+              {" "}
+              <Tabs
+                value={value}
+                onChange={handleTabChange}
+                textColor="inherit"
+                sx={{
+                  flexGrow: 1,
+                  pl: 4, // spacing between title and tabs
+                  ".MuiTab-root": {
+                    fontSize: "1rem", // font size
+                    textTransform: "none", // keep original case
+                    color: "#ffffff", // default color
+                    "&.Mui-selected": {
+                      color: "#ffffff", // selected color
+                      fontWeight: "bold", // bold on selected
+                    },
+                  },
+                  "& .MuiTabs-indicator": {
+                    backgroundColor: "#ffffff",
+                    height: 3,
+                  },
+                }}
+              >
+                <Tab label="Home" />
+                <Tab label="Skill" />
+                <Tab label="Experience" />
+                <Tab label="Project" />
+                <Tab label="Education" />
+              </Tabs>
+            </>
+          )}
+
           {/* <Tooltip title="Raptor">
             <IconButton onClick={handleClick} sx={{ p: 0 }}>
               <Avatar alt="User" />

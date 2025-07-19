@@ -1,14 +1,9 @@
 import {
   AppBar,
-  Avatar,
   Box,
-  IconButton,
-  Menu,
-  MenuItem,
   Tab,
   Tabs,
   Toolbar,
-  Tooltip,
   Typography,
   useTheme,
 } from "@mui/material";
@@ -19,16 +14,16 @@ type HeaderProps = {
 };
 
 export default function Header({ isMobile }: HeaderProps) {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const openMenu = Boolean(anchorEl);
+  //   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  //   const openMenu = Boolean(anchorEl);
   const theme = useTheme();
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+  //   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  //     setAnchorEl(event.currentTarget);
+  //   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  //   const handleClose = () => {
+  //     setAnchorEl(null);
+  //   };
 
   const [value, setValue] = useState(0);
 

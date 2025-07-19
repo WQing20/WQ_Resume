@@ -6,6 +6,8 @@ import Landing from "./Landing";
 export default function index() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  console.log("isMobile:", isMobile);
+
   return (
     <>
       <Header isMobile={isMobile}></Header>

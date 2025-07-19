@@ -2,8 +2,10 @@ import { Box, Button, Typography, useTheme } from "@mui/material";
 type LandingProps = {
   isMobile: boolean;
 };
-export default function Landing(isMobile: LandingProps) {
+export default function Landing({ isMobile }: LandingProps) {
   const theme = useTheme();
+  console.log("isMobile:", isMobile);
+
   return (
     <>
       <Box
@@ -19,6 +21,8 @@ export default function Landing(isMobile: LandingProps) {
       >
         <Typography
           variant={isMobile ? "h4" : "h2"}
+          fontWeight={600}
+          //   variant="h2"
           textAlign={"center"}
           color="#ffffffff"
         >

@@ -50,7 +50,6 @@ export default function Header({ isMobile }: HeaderProps) {
         transition: "margin 1.3s ease, width 0.3s ease",
         background: theme.gradients.primary,
         // color: "primaryBg.contrastText",
-        boxShadow: "none",
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -67,7 +66,7 @@ export default function Header({ isMobile }: HeaderProps) {
             <>
               {" "}
               <IconButton sx={{ padding: 0 }} onClick={handleClick}>
-                <MenuIcon />
+                <MenuIcon sx={{ color: "#ffffff" }} />
               </IconButton>
               <Menu
                 anchorEl={anchorEl}
@@ -77,9 +76,11 @@ export default function Header({ isMobile }: HeaderProps) {
                   sx: { mt: 1.5, minWidth: 160 },
                 }}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Settings</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleClose}>Home</MenuItem>
+                <MenuItem onClick={handleClose}>Skill</MenuItem>
+                <MenuItem onClick={handleClose}>Experience</MenuItem>
+                <MenuItem onClick={handleClose}>Project</MenuItem>
+                <MenuItem onClick={handleClose}>Education</MenuItem>
               </Menu>
             </>
           ) : (
@@ -99,6 +100,10 @@ export default function Header({ isMobile }: HeaderProps) {
                     "&.Mui-selected": {
                       color: "#ffffff", // selected color
                       fontWeight: "bold", // bold on selected
+                    },
+                    transition: "color 0.3s ease",
+                    "&:hover": {
+                      color: "secondary.main", // change text color on hover
                     },
                   },
                   "& .MuiTabs-indicator": {

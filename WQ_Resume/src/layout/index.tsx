@@ -1,6 +1,7 @@
 import Header from "./Header";
 
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import Landing from "./Landing";
 
 export default function index() {
   const theme = useTheme();
@@ -8,6 +9,11 @@ export default function index() {
   return (
     <>
       <Header isMobile={isMobile}></Header>
+      <Box sx={{ ...theme.mixins.toolbar }} /> {/* Spacer */}
+      <Landing isMobile={isMobile} />
+      {/* <Box sx={{ mt: 8 }}>
+        <Landing isMobile={isMobile} />
+      </Box> */}
     </>
   );
 }

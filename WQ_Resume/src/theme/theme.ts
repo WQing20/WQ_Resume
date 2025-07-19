@@ -68,7 +68,8 @@ const theme = createTheme({
     },
   },
   gradients: {
-    primary: "linear-gradient(135deg, #1976d2, #42a5f5)",
+    primary:
+      "linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(139, 92, 246, 0.9))",
   },
   typography: {
     fontFamily: "Poppins, Arial, sans-serif", // Or Roboto if using @fontsource/roboto

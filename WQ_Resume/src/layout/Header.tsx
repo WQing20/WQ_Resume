@@ -5,6 +5,8 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Tab,
+  Tabs,
   Toolbar,
   Tooltip,
   Typography,
@@ -27,6 +29,12 @@ export default function Header({ isMobile }: HeaderProps) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [value, setValue] = useState(0);
+
+  const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
   return (
     <AppBar
       position="fixed"
@@ -48,20 +56,31 @@ export default function Header({ isMobile }: HeaderProps) {
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box sx={{ display: "flex" }}>
-          {/* {isMobile && (
-            <IconButton sx={{ padding: 0 }} onClick={toggleDrawer}>
-              <MenuIcon />
-            </IconButton>
-          )} */}
           <Typography
             variant="h5"
             sx={{ fontWeight: 600, ml: isMobile ? 1 : 0 }}
           >
-            Dashboard
+            Wei Qing
           </Typography>
         </Box>
-        <Box>
-          <Tooltip title="Raptor">
+        <Box sx={{ display: "flex" }}>
+          <Tabs
+            value={value}
+            onChange={handleTabChange}
+            textColor="inherit"
+            indicatorColor="secondary"
+            sx={{
+              flexGrow: 1,
+              ml: 4, // spacing between title and tabs
+            }}
+          >
+            <Tab label="Home" />
+            <Tab label="Skill" />
+            <Tab label="Experience" />
+            <Tab label="Project" />
+            <Tab label="Education" />
+          </Tabs>
+          {/* <Tooltip title="Raptor">
             <IconButton onClick={handleClick} sx={{ p: 0 }}>
               <Avatar alt="User" />
             </IconButton>
@@ -78,7 +97,7 @@ export default function Header({ isMobile }: HeaderProps) {
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>Settings</MenuItem>
             <MenuItem onClick={handleClose}>Logout</MenuItem>
-          </Menu>
+          </Menu> */}
         </Box>
       </Toolbar>
     </AppBar>

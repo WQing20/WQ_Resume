@@ -70,6 +70,9 @@ const theme = createTheme({
   gradients: {
     primary: "linear-gradient(135deg, #1976d2, #42a5f5)",
   },
+  typography: {
+    fontFamily: "Poppins, Arial, sans-serif", // Or Roboto if using @fontsource/roboto
+  },
   //   components: {
   //     MuiAppBar: {
   //       styleOverrides: {

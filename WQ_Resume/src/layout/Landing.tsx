@@ -1,9 +1,10 @@
 import { Box, Button, Grid, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import { fadeUpConfig, slideInLeftConfig } from "../animation";
-import SkillCard from "../components/SkillCard";
-import SkillCard2 from "../components/SkillCard2";
-import SkillCard3 from "../components/SkillCard3";
+import { fadeUpConfig, slideInLeftConfig, zoomInConfig } from "../animation";
+import SkillCard from "../components/Skill/SkillCard";
+import SkillCard2 from "../components/Skill/SkillCard2";
+import SkillCard3 from "../components/Skill/SkillCard3";
+import ExpCard from "../components/Experience/ExpCard";
 type LandingProps = {
   isMobile: boolean;
 };
@@ -77,24 +78,66 @@ export default function Landing({ isMobile }: LandingProps) {
           // background: "#ffffff",
         }}
       >
-        <Typography
-          variant={isMobile ? "h4" : "h2"}
-          fontWeight={600}
-          color="#eec806"
-        >
-          Skills
-        </Typography>
-        <Grid container spacing={2} sx={{ justifyContent: "center" }}>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <SkillCard />
+        <motion.div {...slideInLeftConfig}>
+          <Typography
+            variant={isMobile ? "h4" : "h2"}
+            fontWeight={600}
+            color="#eec806"
+          >
+            Skills
+          </Typography>
+        </motion.div>
+
+        <motion.div {...zoomInConfig}>
+          <Grid container spacing={2} sx={{ justifyContent: "center" }}>
+            <Grid size={{ xs: 12, md: 4 }}>
+              <SkillCard />
+            </Grid>
+            <Grid size={{ xs: 12, md: 4 }}>
+              <SkillCard2 />
+            </Grid>
+            <Grid size={{ xs: 12, md: 4 }}>
+              <SkillCard3 />
+            </Grid>
           </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <SkillCard2 />
+        </motion.div>
+      </Box>
+      <Box
+        display={"flex"}
+        flexDirection={"column"}
+        sx={{
+          // justifyContent: "center",
+          alignItems: "center",
+          paddingY: { xs: 5, sm: 7, md: 10 },
+          paddingX: { xs: 5, sm: 7, md: 10 },
+          gap: 3,
+          background: "#4c535e",
+          // background: "#ffffff",
+        }}
+      >
+        <motion.div {...slideInLeftConfig}>
+          <Typography
+            variant={isMobile ? "h4" : "h2"}
+            fontWeight={600}
+            color="#eec806"
+          >
+            Experiences
+          </Typography>
+        </motion.div>
+
+        <motion.div {...zoomInConfig}>
+          <Grid container spacing={2} sx={{ justifyContent: "center" }}>
+            <Grid size={{ xs: 12, md: 12 }}>
+              <ExpCard />
+            </Grid>
+            <Grid size={{ xs: 12, md: 12 }}>
+              <ExpCard />
+            </Grid>
+            <Grid size={{ xs: 12, md: 12 }}>
+              <ExpCard />
+            </Grid>
           </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <SkillCard3 />
-          </Grid>
-        </Grid>
+        </motion.div>
       </Box>
     </>
   );
